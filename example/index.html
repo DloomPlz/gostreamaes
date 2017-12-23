@@ -1,0 +1,67 @@
+<html>
+<head>
+  <title>Chiffrement</title>
+</head>
+<body>
+  <h1> Encrypt : </h1>
+  <form id="formEncrypt" name="formEncrypt" action="http://localhost:9090/encrypt" enctype="multipart/form-data" method="post">
+    <p>
+      Input File:
+      <input type="file" name="uploadfile" required>
+      <!-- <input type="file" name="keyFile"> -->
+    </p>
+    <p>
+      Key String : 
+      <input type="text" name="key" required>
+    </p>
+
+    <input type="submit" value="encrypt">
+  </form>
+
+  <h1> Decrypt : </h1>
+  <form id="formDecrypt" name="formDecrypt" action="http://localhost:9090/decrypt" enctype="multipart/form-data" method="post">
+    <p>
+      Input File:
+      <input type="file" name="uploadfile" required>
+      <!-- <input type="file" name="keyFile"> -->
+    </p>
+    <p>
+      Key String : 
+      <input type="text" name="key" required>
+    </p>
+
+    <input type="submit" value="decrypt">
+  </form>
+
+</body>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+<script>
+
+
+       $("#formEncrypt").submit(function() {
+
+    var formData = new FormData(this);
+
+    $.post($(this).attr("action"), formData, function(data) {
+        alert(data);
+    });
+
+    return false;
+});
+
+       $("#formDecrypt").submit(function() {
+
+    var formData = new FormData(this);
+
+    $.post($(this).attr("action"), formData, function(data) {
+        alert(data);
+    });
+
+    return false;
+});
+    
+</script>
+</html>
